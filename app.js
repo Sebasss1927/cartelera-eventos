@@ -1,71 +1,46 @@
-let allEvents = [];
-
-async function loadEvents() {
-  // 🔹 Cambiado para que funcione con archivos en el mismo nivel
-  const res = await fetch('events.json');
-  const events = await res.json();
-  allEvents = events;
-  handleRouting();
+// Rutas soportadas:
+// #/catalog?query=&cat=&sort=
+// #/event/ID
+// #/cart
+// #/favorites
+function parseHash() {
+  const raw = location.hash.slice(1);       // e.g., "catalog?query=x"
+  if (!raw) return { path: "catalog", params: {} };
+  const [path, query] = raw.split("?");
+  const params = {};
+  if (query) {
+    for (const kv of query.split("&")) {
+      const [k, v] = kv.split("=");
+      params[decodeURIComponent(k)] = decodeURIComponent(v ?? "");
+    }
+  }
+  return { path, params };
 }
 
-function renderEvents(events) {
-  const container = document.getElementById('main-content');
-  const html = `
-    <section id="filters">
-      <select id="filter-category">
-        <option value="">Todas las categorías</option>
-        <option value="musica">Música</option>
-        <option value="teatro">Teatro</option>
-        <option value="standup">Stand-Up</option>
-        <option value="festival">Festival</option>
-        <option value="otros">Otros</option>
-      </select>
-      <select id="sort">
-        <option value="">Ordenar por...</option>
-        <option value="date_asc">Fecha ↑</option>
-        <option value="date_desc">Fecha ↓</option>
-        <option value="price_asc">Precio ↑</option>
-        <option value="price_desc">Precio ↓</option>
-        <option value="popularity">Popularidad</option>
-      </select>
-    </section>
-    <section id="event-list">
-      ${events.map(evt => `
-        <div class="event-card" onclick="location.hash='event/${evt.id}'">
-          <img src="${evt.images[0]}" alt="${evt.title}">
-          <div class="event-card-content">
-            <h3>${evt.title}</h3>
-            <p>${evt.city} — ${new Date(evt.datetime).toLocaleDateString()}</p>
-            <p class="price">Desde ${evt.currency} ${evt.priceFrom}</p>
-          </div>
-        </div>
-      `).join('')}
-    </section>
-  `;
-  container.innerHTML = html;
+function navigate(path, params = {}) {
+  const q = Object.keys(params).length
+    ? "?" + Object.entries(params).map(([k, v]) =>
+        `${encodeURIComponent(k)}=${encodeURIComponent(v)}`
+      ).join("&")
+    : "";
+  location.hash = `${path}${q}`;
+}
 
-  // Eventos de búsqueda, filtros y orden
-  document.getElementById('search').addEventListener('input', e => {
-    const query = e.target.value.toLowerCase();
-    const filtered = allEvents.filter(evt =>
-      evt.title.toLowerCase().includes(query) ||
-      evt.city.toLowerCase().includes(query) ||
-      evt.artists.join(' ').toLowerCase().includes(query)
-    );
-    renderEvents(filtered);
-  });
+function handleRouting() {
+  const { path, params } = parseHash();
+  if (path.startsWith("event/")) {
+    const id = path.split("/")[1];
+    renderDetail(id);
+  } else if (path === "cart") {
+    renderCart();
+  } else if (path === "favorites") {
+    renderFavorites();
+  } else {
+    renderCatalog(params);
+  }
+}
 
-  document.getElementById('filter-category').addEventListener('change', e => {
-    const cat = e.target.value;
-    const filtered = cat ? allEvents.filter(evt => evt.category === cat) : allEvents;
-    renderEvents(filtered);
-  });
+window.addEventListener("hashchange", handleRouting);
 
-  document.getElementById('sort').addEventListener('change', e => {
-    const val = e.target.value;
-    let sorted = [...allEvents];
-    switch(val) {
-      case 'date_asc': sorted.sort((a,b) => new Date(a.datetime) - new Date(b.datetime)); break;
-      case 'date_desc': sorted.sort((a,b) => new Date(b.datetime) - new Date(a.datetime)); break;
-      case 'price_asc': sorted.sort((a,b) => a.priceFrom - b.priceFrom); break;
-      case 'price_desc': sorted.sort((a,b) => b.priceFrom - a.priceFrom); break;
+// Exponer helpers globales que usa app.js
+window._router = { parseHash, navigate };
