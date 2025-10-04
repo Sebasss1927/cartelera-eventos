@@ -12,7 +12,7 @@
     "stock": 850,
     "soldOut": false,
     "popularity": 87,
-    "images": ["/assets/evt-0002/cover.jpg"],
+    "images": ["https://cdn.deultimominuto.net/wp-content/uploads/2022/05/2-scaled.jpg"],
     "policies": {
       "age": "Todas las edades",
       "refund": "Reembolso hasta 48h antes"
@@ -32,7 +32,7 @@
     "stock": 30000,
     "soldOut": false,
     "popularity": 95,
-    "images": ["/assets/evt-0003/cover.jpg"],
+    "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQn-kUhZh4WkF32-cAOVWe9WBBPsC3QCQxS5g&s"],
     "policies": {
       "age": "18+",
       "refund": "No reembolsable"
@@ -52,7 +52,7 @@
     "stock": 400,
     "soldOut": false,
     "popularity": 78,
-    "images": ["/assets/evt-0004/cover.jpg"],
+    "images": ["https://cdn.atrapalo.com/common/photo/event/4/9/2/5786/1695851/vertic_880_0.jpg"],
     "policies": {
       "age": "16+",
       "refund": "No reembolsable"
@@ -72,7 +72,7 @@
     "stock": 600,
     "soldOut": false,
     "popularity": 82,
-    "images": ["/assets/evt-0005/cover.jpg"],
+    "images": ["https://08afc226.delivery.rocketcdn.me/wp-content/uploads/2022/07/La-casa-de-Bernarda-Alba-250-220710.jpg"],
     "policies": {
       "age": "12+",
       "refund": "Reembolso hasta 72h antes"
@@ -92,7 +92,7 @@
     "stock": 50000,
     "soldOut": false,
     "popularity": 98,
-    "images": ["/assets/evt-0006/cover.jpg"],
+    "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY1fOlMrRh9G61T7hg8b0FQPCg3N0fuYSfGkSY7HJ-RF4tuD0kd89dXMZj1VEJGQbmXbQ&usqp=CAU"],
     "policies": {
       "age": "Todas las edades",
       "refund": "Evento gratuito"
@@ -112,7 +112,7 @@
     "stock": 1200,
     "soldOut": false,
     "popularity": 90,
-    "images": ["/assets/evt-0007/cover.jpg"],
+    "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRswljZQxvTeILVkToT_LH6ZXEwyS-Lrcf3Lw&s"],
     "policies": {
       "age": "10+",
       "refund": "Reembolso hasta 7 días antes"
@@ -132,7 +132,7 @@
     "stock": 2500,
     "soldOut": false,
     "popularity": 85,
-    "images": ["/assets/evt-0008/cover.jpg"],
+    "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAjlWg0VsVZFn1Xuyrw8wuyX0188Lra6XFiA&s"],
     "policies": {
       "age": "Todas las edades",
       "refund": "Reembolso parcial hasta 5 días antes"
@@ -152,7 +152,7 @@
     "stock": 2000,
     "soldOut": false,
     "popularity": 70,
-    "images": ["/assets/evt-0009/cover.jpg"],
+    "images": ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSifu8zwRMYWmy5iz_xCttVt0mcoUHKgYBqKQ&s"],
     "policies": {
       "age": "Todas las edades",
       "refund": "No reembolsable"
@@ -172,7 +172,7 @@
     "stock": 1500,
     "soldOut": false,
     "popularity": 65,
-    "images": ["/assets/evt-0010/cover.jpg"],
+    "images": ["https://lamula.pe/media/uploads/t/a066037b0065f1e3afa64a7f99984a27.jpg"],
     "policies": {
       "age": "Todas las edades",
       "refund": "Evento gratuito"
@@ -180,3 +180,4 @@
     "description": "Proyección gratuita de películas clásicas bajo las estrellas."
   }
 ]
+
