@@ -1,7 +1,8 @@
 let allEvents = [];
 
 async function loadEvents() {
-  const res = await fetch('./data/events.json');
+  // 🔹 Cambiado para que funcione con archivos en el mismo nivel
+  const res = await fetch('events.json');
   const events = await res.json();
   allEvents = events;
   handleRouting();
@@ -68,32 +69,3 @@ function renderEvents(events) {
       case 'date_desc': sorted.sort((a,b) => new Date(b.datetime) - new Date(a.datetime)); break;
       case 'price_asc': sorted.sort((a,b) => a.priceFrom - b.priceFrom); break;
       case 'price_desc': sorted.sort((a,b) => b.priceFrom - a.priceFrom); break;
-      case 'popularity': sorted.sort((a,b) => b.popularity - a.popularity); break;
-    }
-    renderEvents(sorted);
-  });
-}
-
-function renderDetail(id) {
-  const evt = allEvents.find(e => e.id === id);
-  const container = document.getElementById('main-content');
-
-  container.innerHTML = `
-    <section id="event-detail">
-      <button id="back-btn" onclick="location.hash=''">← Volver</button>
-      <img src="${evt.images[0]}" alt="${evt.title}">
-      <h2>${evt.title}</h2>
-      <p><strong>Ciudad:</strong> ${evt.city}</p>
-      <p><strong>Lugar:</strong> ${evt.venue}</p>
-      <p><strong>Fecha:</strong> ${new Date(evt.datetime).toLocaleString()}</p>
-      <p><strong>Precio desde:</strong> ${evt.currency} ${evt.priceFrom}</p>
-      <p><strong>Edad:</strong> ${evt.policies.age}</p>
-      <p><strong>Reembolso:</strong> ${evt.policies.refund}</p>
-      <p><strong>Descripción:</strong> ${evt.description}</p>
-      <p><strong>Artistas:</strong> ${evt.artists.join(', ')}</p>
-    </section>
-  `;
-}
-
-window.addEventListener('hashchange', handleRouting);
-loadEvents();
