@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🎫 Cartelera de Eventos</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>🎶 Cartelera de Eventos</h1>
+    <div class="search-bar">
+      <input type="text" id="search" placeholder="Buscar por título, artista o ciudad..." />
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section id="filters">
+      <select id="filter-category">
+        <option value="">Todas las categorías</option>
+        <option value="musica">Música</option>
+        <option value="teatro">Teatro</option>
+        <option value="standup">Stand-Up</option>
+        <option value="festival">Festival</option>
+        <option value="otros">Otros</option>
+      </select>
+
+      <select id="sort">
+        <option value="">Ordenar por...</option>
+        <option value="date_asc">Fecha ↑</option>
+        <option value="date_desc">Fecha ↓</option>
+        <option value="price_asc">Precio ↑</option>
+        <option value="price_desc">Precio ↓</option>
+        <option value="popularity">Popularidad</option>
+      </select>
+    </section>
+
+    <section id="event-list"></section>
+  </main>
+
+  <footer>
+    <p>© 2025 Cartelera de Eventos — Desarrollado por Sebastián Quineche</p>
+  </footer>
+
+  <script src="js/router.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
